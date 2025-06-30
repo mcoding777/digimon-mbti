@@ -1,62 +1,74 @@
 [
   {
-    "파트너": "신태일",
-    "MBTI": "ENFJ",
-    "디지몬": "아구몬"
+    "id": 1,
+    "name": "신태일",
+    "MBTI": ["ESTP"],
+    "digimonId": 1
   },
   {
-    "파트너": "매튜",
-    "MBTI": "ISTP",
-    "디지몬": "파피몬"
+    "id": 2,
+    "name": "매튜",
+    "mbti": ["ISFP"],
+    "digimonId": 2
   },
   {
-    "파트너": "한솔",
-    "MBTI": "INTP",
-    "디지몬": "텐타몬"
+    "id": 3,
+    "name": "소라",
+    "mbti": ["ESFJ", "INFJ"],
+    "digimonId": 3
   },
   {
-    "파트너": "소라",
-    "MBTI": "ISFJ",
-    "디지몬": "피요몬"
+    "id": 4,
+    "name": "장한솔",
+    "MBTI": ["INTP"],
+    "digimonId": 4
   },
   {
-    "파트너": "이미나",
-    "MBTI": "ESFP",
-    "디지몬": "팔몬"
+    "id": 5,
+    "name": "이미나",
+    "mbti": ["ESFP"],
+    "digimonId": 5
   },
   {
-    "파트너": "정석",
-    "MBTI": "ISTJ",
-    "디지몬": "고마몬"
+    "id": 6,
+    "name": "정석",
+    "mbti": ["ISTJ", "ESTJ"],
+    "digimonId": 7
   },
   {
-    "파트너": "리키",
-    "MBTI": "INFP",
-    "디지몬": "파닥몬"
+    "id": 7,
+    "name": "리키",
+    "mbti": ["INFP", "ENFJ"],
+    "digimonId": 6
   },
   {
-    "파트너": "신나리",
-    "MBTI": "INFJ",
-    "디지몬": "테일몬"
+    "id": 8,
+    "name": "신나리",
+    "mbti": ["INFJ", "INFP"],
+    "digimonId": 8
   },
   {
-    "파트너": "최산해",
-    "MBTI": "ESFP",
-    "디지몬": "브이몬"
+    "id": 9,
+    "name": "최산해",
+    "mbti": ["ESFP", "ENFP"],
+    "digimonId": 9
   },
   {
-    "파트너": "홍예지",
-    "MBTI": "ENTP",
-    "디지몬": "호크몬"
+    "id": 10,
+    "name": "홍예지",
+    "mbti": ["ENTP", "ESFJ"],
+    "digimonId": 12
   },
   {
-    "파트너": "이재하",
-    "MBTI": "ISFJ",
-    "디지몬": "아르마몬"
+    "id": 11,
+    "name": "이재하",
+    "mbti": ["ISFJ", "ISTJ"],
+    "digimonId": "아르마몬"
   },
   {
-    "파트너": "서정우",
-    "MBTI": "INTJ",
-    "디지몬": "웜몬"
+    "id": 12,
+    "name": "서정우",
+    "mbti": ["INTJ"],
+    "digimonId": 10
   }
 ]
