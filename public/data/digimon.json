@@ -1,0 +1,62 @@
+[
+  {
+    "name": "아구몬",
+    "mbti": ["ENFP", "ESFP", "ESTP"],
+    "description": "열정적이고 낙천적이며, 친구를 잘 챙기고 모험을 즐기는 타입"
+  },
+  {
+    "name": "파피몬",
+    "mbti": ["ISFJ", "INFP", "ISFP"],
+    "description": "조용하고 상상력이 풍부하며, 따뜻한 마음을 가진 감성적 타입"
+  },
+  {
+    "name": "피요몬",
+    "mbti": ["ESFJ", "ENFJ", "ESFP", "ENFP"],
+    "description": "활발하고 사교적이며, 주변을 잘 챙기고 리더십이 있는 타입"
+  },
+  {
+    "name": "텐타몬",
+    "mbti": ["ESFJ", "ISTP", "INTP"],
+    "description": "논리적이고 침착하며, 실용적인 문제 해결을 선호하는 타입"
+  },
+  {
+    "name": "팔몬",
+    "mbti": ["ESFJ", "ISFP", "INFP", "ENFP", "ESFP"],
+    "description": "온순하고 자연을 좋아하며, 감수성이 풍부한 타입"
+  },
+  {
+    "name": "파닥몬",
+    "mbti": ["INFP", "ISFP", "ISFJ"],
+    "description": "명랑하고 긍정적이며, 분위기를 밝게 만드는 타입"
+  },
+  {
+    "name": "쉬라몬",
+    "mbti": ["ESFP", "ESTP", "ISTP", "ENFJ", "ESFJ"],
+    "description": "즉흥적이고 유쾌하며, 도전을 두려워하지 않는 타입"
+  },
+  {
+    "name": "가트몬",
+    "mbti": ["INFJ", "INTJ", "ISFJ", "ISTJ"],
+    "description": "독립적이고 전략적이며, 신뢰할 수 있는 조력자 타입"
+  },
+  {
+    "name": "브이몬",
+    "mbti": ["ESTP", "ENTP", "ENFP", "ESFP"],
+    "description": "모험심이 강하고, 즉흥적이며 도전을 즐기는 타입"
+  },
+  {
+    "name": "웜몬",
+    "mbti": ["ISFJ", "INFJ", "INFP", "ENFP"],
+    "description": "배려심이 깊고, 조용하지만 의리가 강한 타입"
+  },
+  {
+    "name": "아르마몬",
+    "mbti": ["ISTJ", "ISFJ", "ISFP", "ISTP"],
+    "description": "성실하고 책임감이 강하며, 변화를 두려워하지 않는 타입"
+  },
+  {
+    "name": "호크몬",
+    "mbti": ["ENTJ", "ESTJ", "ENTP", "INTP", "ISTJ", "ISFJ"],
+    "description": "리더십이 강하고, 체계적이며 목표지향적인 타입"
+  }
+]
