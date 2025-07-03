@@ -21,7 +21,7 @@ export default function QA({ currentQ, value, setValue }: QA) {
                         <img
                             src={`/image/question/${currentQ.img}`}
                             alt="상황 이미지"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-fill"
                         />
                     ) : (
                         /* 플레이스홀더 */
@@ -60,9 +60,9 @@ export default function QA({ currentQ, value, setValue }: QA) {
                                     value={option.value}
                                     checked={value === option.value}
                                     onChange={() => setValue(currentQ.id, option.value)}
-                                    className="w-4 h-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
+                                    className="w-4 h-4 flex-shrink-0 text-indigo-600 focus:ring-indigo-500 border-gray-300"
                                 />
-                                <span className="ml-3 text-gray-700 text-sm leading-relaxed">
+                                <span className="ml-3 text-gray-700 text-sm leading-relaxed flex-1">
                                     {option.text}
                                 </span>
                             </div>
