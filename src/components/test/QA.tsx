@@ -5,12 +5,13 @@ import { Question } from "@/types/test";
 import { useEffect, useMemo, useState } from "react"
 
 interface QA {
+    idx: number
     currentQ: Question
     value: string | null;
     setValue: (id: number, value: string) => void
 }
 
-export default function QA({ currentQ, value, setValue }: QA) {
+export default function QA({ idx, currentQ, value, setValue }: QA) {
     return (
         <div>
             {/* 상황 이미지 */}
@@ -37,7 +38,7 @@ export default function QA({ currentQ, value, setValue }: QA) {
 
             <div className="mb-8">
                 <h2 className="text-lg font-bold text-gray-700 mb-6 leading-relaxed">
-                    {currentQ.question}
+                    {idx + 1}. {currentQ.question}
                 </h2>
 
                 {/* 선택지 */}

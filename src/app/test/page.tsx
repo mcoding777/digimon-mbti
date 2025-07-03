@@ -57,7 +57,7 @@ export default function Test() {
                 </div>
 
                 {/* 질답 */}
-                {questions.length && <QA currentQ={questions[currentQa]} value={currentValue} setValue={setAnswer} />}
+                {questions.length && <QA idx={currentQa} currentQ={questions[currentQa]} value={currentValue} setValue={setAnswer} />}
 
                 {/* 네비게이션 버튼 */}
                 <div className="flex justify-between items-center">
