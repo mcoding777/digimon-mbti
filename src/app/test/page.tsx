@@ -5,15 +5,14 @@ import ChevronRight from "@/components/test/ChevronRight";
 import QA from "@/components/test/QA";
 import { useTestStore } from "@/hooks/useTestStore";
 import { Question } from "@/types/test";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function Test() {
     const [questions, setQuestions] = useState<Question[]>([]);
     const [currentQa, setCurrentQa] = useState(0);
-    const [currentValue, setCurrentValue] = useState<string | null>(null)
+    const currentValue = useTestStore((state) => state.answers.get(currentQa + 1) ?? null)
 
     const setAnswer = useTestStore((state) => state.setAnswer)
-    const getAnswer = useTestStore((state) => state.getAnswer)
 
     const progress = ((currentQa + 1) / questions.length) * 100;
 
@@ -34,12 +33,6 @@ export default function Test() {
             .then((res) => res.json())
             .then((data) => setQuestions(data));
     }, []);
-
-    useEffect(() => {
-        if (questions.length) {
-            setCurrentValue(getAnswer(questions[currentQa].id))
-        }
-    }, [questions, currentQa])
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center px-4">
@@ -64,7 +57,7 @@ export default function Test() {
                 </div>
 
                 {/* 질답 */}
-                {questions.length && <QA idx={currentQa} currentQ={questions[currentQa + 1]} value={currentValue} setValue={setAnswer} />}
+                {questions.length && <QA currentQ={questions[currentQa]} value={currentValue} setValue={setAnswer} />}
 
                 {/* 네비게이션 버튼 */}
                 <div className="flex justify-between items-center">

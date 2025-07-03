@@ -16,7 +16,7 @@ export const useTestStore = create<TestStore>((set, get) => ({
   setAnswer: (id, value) => {
     set((state) => {
       const currentValue = state.answers.get(id)
-      return { answers: currentValue !== value ? new Map([...state.answers, [id, value]]) : state.answers}
+      return { answers: currentValue !== value ? new Map([...state.answers, [id, value]]) : state.answers }
     })
   },
 

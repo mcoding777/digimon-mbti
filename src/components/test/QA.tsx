@@ -5,14 +5,12 @@ import { Question } from "@/types/test";
 import { useEffect, useMemo, useState } from "react"
 
 interface QA {
-    idx: number;
     currentQ: Question
     value: string | null;
     setValue: (id: number, value: string) => void
 }
 
-export default function QA({ idx, currentQ, value, setValue }: QA) {
-
+export default function QA({ currentQ, value, setValue }: QA) {
     return (
         <div>
             {/* 상황 이미지 */}
@@ -60,7 +58,7 @@ export default function QA({ idx, currentQ, value, setValue }: QA) {
                                     type="radio"
                                     name={`question-${currentQ.id}`}
                                     value={option.value}
-                                    checked={value === option.text}
+                                    checked={value === option.value}
                                     onChange={() => setValue(currentQ.id, option.value)}
                                     className="w-4 h-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
                                 />
