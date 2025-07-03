@@ -5,16 +5,16 @@ import ChevronRight from "@/components/test/ChevronRight";
 import QA from "@/components/test/QA";
 import { useTestStore } from "@/hooks/useTestStore";
 import { Question } from "@/types/test";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Test() {
     const [questions, setQuestions] = useState<Question[]>([]);
     const [currentQa, setCurrentQa] = useState(0);
     const currentValue = useTestStore((state) => state.answers.get(currentQa + 1) ?? null)
+    const answersLen = useTestStore((state) => state.answers.size)
+    const progress = ((answersLen) / questions.length) * 100;
 
     const setAnswer = useTestStore((state) => state.setAnswer)
-
-    const progress = ((currentQa + 1) / questions.length) * 100;
 
     const handleNext = () => {
         if (currentQa < questions.length - 1) {
@@ -42,7 +42,7 @@ export default function Test() {
                 <div className="mb-8">
                     <div className="flex justify-between items-center mb-2">
                         <span className="text-sm text-gray-500">
-                            {currentQa + 1} / {questions.length}
+                            {answersLen} / {questions.length}
                         </span>
                         <span className="text-sm text-gray-500">
                             {Math.round(progress)}%
