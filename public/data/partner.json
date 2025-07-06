@@ -2,73 +2,73 @@
   {
     "id": 1,
     "name": "신태일",
-    "MBTI": ["ESTP"],
+    "MBTI": "ESTP",
     "digimonId": 1
   },
   {
     "id": 2,
     "name": "매튜",
-    "mbti": ["ISFP"],
+    "MBTI": "ISFP",
     "digimonId": 2
   },
   {
     "id": 3,
     "name": "소라",
-    "mbti": ["ESFJ", "INFJ"],
+    "MBTI": "INFJ",
     "digimonId": 3
   },
   {
     "id": 4,
     "name": "장한솔",
-    "MBTI": ["INTP"],
+    "MBTI": "INTP",
     "digimonId": 4
   },
   {
     "id": 5,
     "name": "이미나",
-    "mbti": ["ESFP"],
+    "MBTI": "ESFP",
     "digimonId": 5
   },
   {
     "id": 6,
     "name": "정석",
-    "mbti": ["ISTJ", "ESTJ"],
+    "MBTI": "ESTJ",
     "digimonId": 7
   },
   {
     "id": 7,
     "name": "리키",
-    "mbti": ["INFP", "ENFJ"],
+    "MBTI": "ENFJ",
     "digimonId": 6
   },
   {
     "id": 8,
     "name": "신나리",
-    "mbti": ["INFJ", "INFP"],
+    "MBTI": "INFP",
     "digimonId": 8
   },
   {
     "id": 9,
     "name": "최산해",
-    "mbti": ["ESFP", "ENFP"],
+    "MBTI": "ENFP",
     "digimonId": 9
   },
   {
     "id": 10,
     "name": "홍예지",
-    "mbti": ["ENTP", "ESFJ"],
+    "MBTI": "ENTP",
     "digimonId": 12
   },
   {
     "id": 11,
     "name": "이재하",
-    "mbti": ["ISFJ", "ISTJ"],
+    "MBTI": "ISFJ",
     "digimonId": "아르마몬"
   },
   {
     "id": 12,
     "name": "서정우",
-    "mbti": ["INTJ"],
+    "MBTI": "INTJ",
     "digimonId": 10
   }
 ]

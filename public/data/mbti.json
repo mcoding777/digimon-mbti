@@ -1,0 +1,82 @@
+{
+    "ENFP": {
+        "id": 1,
+        "name": "아구몬",
+        "mbti": "ENFP"
+    },
+    "ESFP": {
+        "id": 7,
+        "name": "쉬라몬",
+        "mbti": "ESTP"
+    },
+    "ESTP": {
+        "id": 7,
+        "name": "쉬라몬",
+        "mbti": "ESTP"
+    },
+    "INFP": {
+        "id": 2,
+        "name": "파피몬",
+        "mbti": "INFP"
+    },
+    "ISFJ": {
+        "id": 6,
+        "name": "파닥몬",
+        "mbti": "ISFJ"
+    },
+    "ISFP": {
+        "id": 5,
+        "name": "팔몬",
+        "mbti": "ISFP"
+    },
+    "ESFJ": {
+        "id": 3,
+        "name": "피요몬",
+        "mbti": "ESFJ"
+    },
+    "ENFJ": {
+        "id": 3,
+        "name": "피요몬",
+        "mbti": "ESFJ"
+    },
+    "ISTP": {
+        "id": 4,
+        "name": "텐타몬",
+        "mbti": "ISTP"
+    },
+    "INTP": {
+        "id": 4,
+        "name": "텐타몬",
+        "mbti": "ISTP"
+    },
+    "INFJ": {
+        "id": 10,
+        "name": "웜몬",
+        "mbti": "INFJ"
+    },
+    "INTJ": {
+        "id": 8,
+        "name": "가트몬",
+        "mbti": "INTJ"
+    },
+    "ESTJ": {
+        "id": 12,
+        "name": "호크몬",
+        "mbti": "ENTJ"
+    },
+    "ENTJ": {
+        "id": 12,
+        "name": "호크몬",
+        "mbti": "ENTJ"
+    },
+    "ENTP": {
+        "id": 9,
+        "name": "브이몬",
+        "mbti": "ENTP"
+    },
+    "ISTJ": {
+        "id": 11,
+        "name": "아르마몬",
+        "mbti": "ISTJ"
+    }
+}
