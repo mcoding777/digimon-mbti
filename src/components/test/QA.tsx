@@ -1,8 +1,6 @@
 "use client"
 
-import { useTestStore } from "@/hooks/useTestStore";
 import { Question } from "@/types/test";
-import { useEffect, useMemo, useState } from "react"
 
 interface QA {
     idx: number
@@ -63,7 +61,7 @@ export default function QA({ idx, currentQ, value, setValue }: QA) {
                                     onChange={() => setValue(currentQ.id, option.value)}
                                     className="w-4 h-4 flex-shrink-0 text-indigo-600 focus:ring-indigo-500 border-gray-300"
                                 />
-                                <span className="ml-3 text-gray-700 text-sm leading-relaxed flex-1">
+                                <span className="ml-3 text-gray-700 text-sm leading-relaxed flex-1 text-left">
                                     {option.text}
                                 </span>
                             </div>
