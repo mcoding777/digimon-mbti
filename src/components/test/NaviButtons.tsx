@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction } from "react";
 import ChevronLeft from "./ChevronLeft";
 import { useTestStore } from "@/hooks/useTestStore";
 import ChevronRight from "./ChevronRight";
+import { useRouter } from "next/navigation";
 
 interface NaviButtonsProps {
     currentQa: number
@@ -51,12 +52,12 @@ ${currentQa === 0
 
         <button
             onClick={handleNext}
-            disabled={!currentValue || currentQa === max}
+            disabled={!currentValue}
             className={`
 flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200
-${!currentValue || currentQa === max
+${!currentValue
                     ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-blue-600 hover:to-indigo-700 shadow-lg hover:shadow-xl'
+                    : 'cursor-pointer bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-blue-600 hover:to-indigo-700 shadow-lg hover:shadow-xl'
                 }
 `}
         >
