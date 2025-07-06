@@ -15,14 +15,19 @@ interface NaviButtonsProps {
 
 export default function NaviButtons({ currentQa, setCurrentQa, max, min }: NaviButtonsProps) {
     const currentValue = useTestStore((state) => state.answers.get(currentQa + 1) ?? null)
+    const router = useRouter()
 
     const handleNext = () => {
-        setCurrentQa(prev => {
-            if (prev < max) {
-                return prev + 1
-            }
-            return prev
-        });
+        if (currentQa === max) {
+            router.replace('/result')
+        } else {
+            setCurrentQa(prev => {
+                if (prev < max) {
+                    return prev + 1
+                }
+                return prev
+            });
+        }
     };
 
     const handlePrev = () => {
