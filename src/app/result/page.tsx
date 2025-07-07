@@ -55,37 +55,44 @@ export default function Result() {
     }
 
     return (
-        <div className="max-h-[80vh] overflow-y-auto">
-            <div className="p-5">
-                {/* 결과 헤더 */}
-                <div className="text-center mb-8">
-                    <div className="w-2/3 aspect-square bg-gradient-to-br from-purple-400 to-pink-400 rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                        <img src={`/image/result/${digimon?.[result.id - 1].img}` || ''} className="w-full h-full object-cover" alt="디지몬" />
+        <div className="max-h-[70vh] flex flex-col gap-[20px]">
+            <div className="flex-1 overflow-y-auto custom-scrollbar relative">
+                <div className="overflow-y-auto custom-scrollbar h-full">
+                    {/* 결과 헤더 */}
+                    <div className="text-center">
+                        <div className="w-2/3 aspect-square bg-gradient-to-br from-purple-400 to-pink-400 rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                            <img src={`/image/result/${digimon?.[result.id - 1].img}` || ''} className="w-full h-full object-cover" alt="디지몬" />
+                        </div>
+                        <div className="mt-6 mb-6">
+                            <p className="text-lg text-gray-600">
+                                당신과 어울리는 디지몬은
+                            </p>
+                            <h1 className="text-2xl font-bold text-gray-800 mb-2">
+                                {result?.name}
+                            </h1>
+                        </div>
                     </div>
-                    <p className="text-lg text-gray-600">
-                        당신과 어울리는 디지몬은
-                    </p>
-                    <h1 className="text-2xl font-bold text-gray-800 mb-2">
-                        {result?.name}
-                    </h1>
+
+                    {/* 한줄 요약 */}
+                    <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4">
+                        <p className="text-md text-gray-700 text-center font-normal">
+                            {result?.description}
+                        </p>
+                    </div>
                 </div>
 
-                {/* 한줄 요약 */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 mb-6">
-                    <p className="text-md text-gray-700 text-center font-normal">
-                        {result?.description}
-                    </p>
-                </div>
+                {/* 스크롤 그라디언트 오버레이 */}
+                <div className="sticky bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+            </div>
 
-                {/* 공유 버튼 */}
-                <div className="flex space-x-3 mb-6">
-                    <button className="flex-1 bg-blue-500 text-white py-3 px-4 rounded-xl text-sm font-medium hover:bg-blue-600 transition-colors">
-                        결과 공유하기
-                    </button>
-                    <button className="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors">
-                        다시 테스트
-                    </button>
-                </div>
+            {/* 공유 버튼 */}
+            <div className="flex space-x-3 shrink-0">
+                <button className="flex-1 bg-blue-500 text-white py-3 px-4 rounded-xl text-sm font-medium hover:bg-blue-600 transition-colors">
+                    결과 공유하기
+                </button>
+                <button className="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors">
+                    다시 테스트
+                </button>
             </div>
         </div>
     )
