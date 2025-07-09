@@ -15,10 +15,11 @@ export default function QA({ idx, currentQ, value, setValue }: QA) {
         <div>
             {/* 상황 이미지 */}
             <div className="mb-6">
-                <div className="w-full h-32 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center border-2 border-gray-200 overflow-hidden">
+                <div className="w-full h-32 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center border-2 border-gray-200 overflow-hidden relative">
                     {/* 이미지가 있을 경우 */}
                     {currentQ.img ? (
                         <Image
+                            fill
                             src={`/image/question/${currentQ.img}`}
                             alt="상황 이미지"
                             className="w-full h-full object-fill"

@@ -18,6 +18,7 @@ export default function Slider({ digimons }: { digimons: string[] }) {
                 className={`flex-shrink-0 w-20 h-20 mx-3 flex items-center justify-center border-2 border-gray-200 transform hover:scale-110 transition-all duration-200 cursor-pointer hover:z-10 relative`}
               >
                 <Image
+                  fill
                   key={index}
                   src={`/image/result/${digimon}`}
                   alt='디지몬'
