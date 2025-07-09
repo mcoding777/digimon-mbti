@@ -5,6 +5,7 @@ import RestartButton from "@/components/result/RestartButton"
 import ShareButton from "@/components/result/ShareButton"
 import { useSmoothScrollControl } from "@/hooks/useSmoothScroll"
 import { useTestStore } from "@/hooks/useTestStore"
+import { useSearchParams } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 
 interface MatchData {
@@ -25,6 +26,9 @@ interface DigimonData {
 
 export default function Result() {
     const { container } = useSmoothScrollControl()
+
+    const searchParams = useSearchParams()
+    const search = searchParams.get('mbti')
 
     const answers = useTestStore((state) => state.answers)
     const mbti = useMemo(() => {
@@ -55,8 +59,8 @@ export default function Result() {
             .then((data) => setDigimon(data));
     }, [])
 
-    if (!result) {
-        return <Spinner />
+    if (!search || !result) {
+        return <Spinner text="결과를 분석중입니다." />
     }
 
     return (

@@ -1,4 +1,8 @@
-export default function Spinner() {
+interface SpinnerProps {
+    text: string
+}
+
+export default function Spinner({ text = '' }: SpinnerProps) {
     return (
         <div className="mt-8 mb-8">
             <div className="relative mx-auto w-16 h-16 mb-6">
@@ -14,7 +18,7 @@ export default function Spinner() {
 
             {/* 로딩 메시지 */}
             <h2 className="text-xl text-center font-semibold text-gray-700 mb-2">
-                문제를 준비중입니다.
+                {text}
             </h2>
         </div>
     )

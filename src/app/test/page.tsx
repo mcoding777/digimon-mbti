@@ -25,7 +25,7 @@ export default function Test() {
     }, []);
 
     if (!questions.length) {
-        return <Spinner />
+        return <Spinner text="문제를 준비중입니다." />
     }
 
     return (
