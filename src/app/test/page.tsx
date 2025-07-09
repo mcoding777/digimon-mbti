@@ -1,20 +1,27 @@
 "use client"
 
-import ProgressBar from "@/components/test/ProgressBar";
-import QA from "@/components/test/QA";
+import ProgressBar from "@/app/test/components/ProgressBar";
+import QA from "@/app/test/components/QA";
 import Spinner from "@/components/etc/Spinner";
 import { useTestStore } from "@/hooks/useTestStore";
 import { Question } from "@/utils/types/test";
 import { useEffect, useState } from "react";
-import NaviButtons from "@/components/test/NaviButtons";
+import NaviButtons from "@/app/test/components/NaviButtons";
+import TestComplete from "./components/TestComplete";
 
 export default function Test() {
+    const [complete, setComplete] = useState(false)
+
     const [questions, setQuestions] = useState<Question[]>([]);
     const [currentQa, setCurrentQa] = useState(0);
     const currentValue = useTestStore((state) => state.answers.get(currentQa + 1) ?? null)
     const answersLen = useTestStore((state) => state.answers.size)
 
     const setAnswer = useTestStore((state) => state.setAnswer)
+
+    const onComplete = () => {
+        setComplete(true)
+    }
 
     useEffect(() => {
         fetch("/data/question.json")
@@ -26,6 +33,10 @@ export default function Test() {
         return <Spinner text="문제를 준비중입니다." />
     }
 
+    if (complete) {
+        return <TestComplete />
+    }
+
     return (
         <>
             {/* 진행률 */}
@@ -35,7 +46,7 @@ export default function Test() {
             <QA idx={currentQa} currentQ={questions[currentQa]} value={currentValue} setValue={setAnswer} />
 
             {/* 네비게이션 버튼 */}
-            <NaviButtons currentQa={currentQa} setCurrentQa={setCurrentQa} max={questions.length - 1} min={0} />
+            <NaviButtons currentQa={currentQa} onComplete={onComplete} onSetQa={setCurrentQa} max={questions.length - 1} min={0} />
         </>
     )
 }

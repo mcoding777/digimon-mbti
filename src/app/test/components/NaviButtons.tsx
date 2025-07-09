@@ -8,20 +8,21 @@ import { useRouter } from "next/navigation";
 
 interface NaviButtonsProps {
     currentQa: number
-    setCurrentQa: Dispatch<SetStateAction<number>>
     max: number
     min: number
+    onSetQa: Dispatch<SetStateAction<number>>
+    onComplete: () => void
 }
 
-export default function NaviButtons({ currentQa, setCurrentQa, max, min }: NaviButtonsProps) {
+export default function NaviButtons({ currentQa, max, min, onComplete, onSetQa, }: NaviButtonsProps) {
     const currentValue = useTestStore((state) => state.answers.get(currentQa + 1) ?? null)
     const router = useRouter()
 
     const handleNext = () => {
         if (currentQa === max) {
-            router.replace('/result')
+            onComplete()
         } else {
-            setCurrentQa(prev => {
+            onSetQa(prev => {
                 if (prev < max) {
                     return prev + 1
                 }
@@ -31,7 +32,7 @@ export default function NaviButtons({ currentQa, setCurrentQa, max, min }: NaviB
     };
 
     const handlePrev = () => {
-        setCurrentQa(prev => {
+        onSetQa(prev => {
             if (currentQa > min) {
                 return prev - 1
             }

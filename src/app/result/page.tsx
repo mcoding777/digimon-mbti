@@ -3,9 +3,9 @@ import { Suspense, } from "react"
 import ResultContent from "./ResultContent"
 import { Metadata } from "next";
 
-export async function generateMetadata({ searchParams }: { searchParams: Promise<{ img: string, name: string }> }): Promise<Metadata> {
-    const { img, name } = await searchParams
-    const imageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/image/result/${img}`;
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ imgName: string, name: string }> }): Promise<Metadata> {
+    const { imgName, name } = await searchParams
+    const imageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/image/result/${imgName}`;
 
     // 결과페이지에 맞게 OG 메타태그 구성
     return {
