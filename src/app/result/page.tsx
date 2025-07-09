@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ img: string, name: string }> }): Promise<Metadata> {
     const { img, name } = await searchParams
-    const imageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/image/${img}`;
+    const imageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/image/result/${img}`;
 
     // 결과페이지에 맞게 OG 메타태그 구성
     return {
