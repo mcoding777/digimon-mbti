@@ -1,7 +1,5 @@
 "use client"
 
-import ChevronLeft from "@/components/test/ChevronLeft";
-import ChevronRight from "@/components/test/ChevronRight";
 import ProgressBar from "@/components/test/ProgressBar";
 import QA from "@/components/test/QA";
 import Spinner from "@/components/etc/Spinner";

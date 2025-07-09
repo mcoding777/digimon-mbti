@@ -28,18 +28,9 @@ export default function Result() {
     const { container } = useSmoothScrollControl()
 
     const searchParams = useSearchParams()
-    const search = searchParams.get('mbti')
+    const mbti = searchParams.get('mbti')
 
     const answers = useTestStore((state) => state.answers)
-    const mbti = useMemo(() => {
-        const result: Record<string, number> = {};
-
-        answers.forEach((value) => {
-            result[value] = (result?.[value] || 0) + 1;
-        })
-
-        return `${findMbti(result, 'I', 'E')}${findMbti(result, 'N', 'S')}${findMbti(result, 'T', 'F')}${findMbti(result, 'J', 'P')}`
-    }, [answers])
     const [matchData, setMatchData] = useState<Record<string, MatchData>>()
     const [digimon, setDigimon] = useState<DigimonData[]>()
     const result = useMemo(() => {
@@ -50,6 +41,23 @@ export default function Result() {
     }, [mbti, matchData, digimon])
 
     useEffect(() => {
+        if (mbti || answers.size === 0) return;
+
+        const count: Record<string, number> = {};
+
+        answers.forEach((value) => {
+            count[value] = (count?.[value] || 0) + 1;
+        })
+        const result = `${findMbti(count, 'I', 'E')}${findMbti(count, 'N', 'S')}${findMbti(count, 'T', 'F')}${findMbti(count, 'J', 'P')}`
+
+        const params = new URLSearchParams(searchParams.toString())
+        params.set('mbti', result)
+        window.history.pushState(null, '', `?${params.toString()}`)
+    }, [mbti, answers])
+
+    useEffect(() => {
+        if (!mbti) return
+
         fetch("/data/mbti.json")
             .then((res) => res.json())
             .then((data) => setMatchData(data));
@@ -57,9 +65,9 @@ export default function Result() {
         fetch("/data/digimon.json")
             .then((res) => res.json())
             .then((data) => setDigimon(data));
-    }, [])
+    }, [mbti])
 
-    if (!search || !result) {
+    if (!mbti || !result) {
         return <Spinner text="결과를 분석중입니다." />
     }
 
@@ -104,7 +112,7 @@ export default function Result() {
 }
 
 function findMbti(obj: Record<string, number>, target1: string, target2: string) {
-    const num1 = obj[target1], num2 = obj[target2];
+    const num1 = obj?.[target1] || 0, num2 = obj?.[target2] || 0;
     return num1 > num2 ? target1 : target2;
 
 }

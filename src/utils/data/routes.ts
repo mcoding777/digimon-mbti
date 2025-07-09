@@ -3,6 +3,6 @@ export const ROUTES = {
     TEST: '/test',
     RESULT: {
         ROOT: '/result',
-        USERS: (id: string) => `/result/${id}`,
+        USERS: (mbti: string) => `/result?mbti=${mbti}`,
     },
 } as const;
