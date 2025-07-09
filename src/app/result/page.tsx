@@ -26,7 +26,7 @@ export default function Result() {
         const result: Record<string, number> = {};
 
         answers.forEach((value) => {
-            result[value] = result?.[value] || 0 + 1;
+            result[value] = (result?.[value] || 0) + 1;
         })
 
         return `${findMbti(result, 'I', 'E')}${findMbti(result, 'N', 'S')}${findMbti(result, 'T', 'F')}${findMbti(result, 'J', 'P')}`
