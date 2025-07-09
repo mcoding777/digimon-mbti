@@ -1,6 +1,7 @@
 "use client"
 
 import { Question } from "@/utils/types/test";
+import Image from 'next/image'
 
 interface QA {
     idx: number
@@ -17,7 +18,7 @@ export default function QA({ idx, currentQ, value, setValue }: QA) {
                 <div className="w-full h-32 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center border-2 border-gray-200 overflow-hidden">
                     {/* 이미지가 있을 경우 */}
                     {currentQ.img ? (
-                        <img
+                        <Image
                             src={`/image/question/${currentQ.img}`}
                             alt="상황 이미지"
                             className="w-full h-full object-fill"

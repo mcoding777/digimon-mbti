@@ -5,6 +5,7 @@ import RestartButton from "@/components/result/RestartButton"
 import ShareButton from "@/components/result/ShareButton"
 import { useSmoothScrollControl } from "@/hooks/useSmoothScroll"
 import { useTestStore } from "@/hooks/useTestStore"
+import Image from "next/image"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 
@@ -53,7 +54,7 @@ export default function Result() {
         const params = new URLSearchParams(searchParams.toString())
         params.set('mbti', result)
         window.history.pushState(null, '', `?${params.toString()}`)
-    }, [mbti, answers])
+    }, [mbti, answers, searchParams])
 
     useEffect(() => {
         if (!mbti) return
@@ -78,7 +79,7 @@ export default function Result() {
                     {/* 결과 헤더 */}
                     <div className="text-center">
                         <div className="w-2/3 aspect-square bg-gradient-to-br from-purple-400 to-pink-400 rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                            <img src={`/image/result/${digimon?.[result.id - 1].img}` || ''} className="w-full h-full object-cover" alt="디지몬" />
+                            <Image src={`/image/result/${digimon?.[result.id - 1].img}` || ''} className="w-full h-full object-cover" alt="디지몬" />
                         </div>
                         <div className="mt-6 mb-6">
                             <p className="text-lg text-gray-600">
