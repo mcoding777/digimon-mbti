@@ -1,8 +1,9 @@
 "use client"
 
 import Spinner from "@/components/etc/Spinner"
+import { useSmoothScrollControl } from "@/hooks/useSmoothScroll"
 import { useTestStore } from "@/hooks/useTestStore"
-import { RefObject, useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 interface MatchData {
     id: number
@@ -21,7 +22,7 @@ interface DigimonData {
 }
 
 export default function Result() {
-    const container: RefObject<HTMLDivElement | null> = useRef(null)
+    const { container } = useSmoothScrollControl()
 
     const answers = useTestStore((state) => state.answers)
     const mbti = useMemo(() => {
@@ -51,55 +52,6 @@ export default function Result() {
             .then((res) => res.json())
             .then((data) => setDigimon(data));
     }, [])
-
-    useEffect(() => {
-        let targetScrollTop = 0;
-        let isAnimating = false;
-        let frameId: number | null = null;
-
-        // 부드러운 스크롤 효과를 위함
-        const animateScroll = () => {
-            if (!container.current) return;
-
-            const current = container.current.scrollTop;
-            const delta = (targetScrollTop - current) * 0.2;
-
-            // 최소 이동 임계값 설정
-            if (Math.abs(delta) < 0.5) {
-                isAnimating = false;
-                frameId !== null && cancelAnimationFrame(frameId)
-                return;
-            }
-
-            container.current.scrollTop = current + delta;
-            frameId = requestAnimationFrame(animateScroll);
-        };
-
-        const handleWheel = (e: WheelEvent) => {
-            e.preventDefault();
-
-            if (!container.current) return;
-
-            targetScrollTop += e.deltaY;
-
-            // 스크롤 제한 설정
-            const maxScroll =
-                container.current.scrollHeight - container.current.clientHeight;
-            targetScrollTop = Math.max(0, Math.min(targetScrollTop, maxScroll));
-
-            if (!isAnimating) {
-                isAnimating = true;
-                frameId = requestAnimationFrame(animateScroll);
-            }
-        };
-
-        document.addEventListener('wheel', handleWheel, { passive: false });
-
-        return () => {
-            document.removeEventListener('wheel', handleWheel);
-            frameId !== null && cancelAnimationFrame(frameId)
-        };
-    }, []);
 
     if (!result) {
         return <Spinner />
