@@ -1,6 +1,8 @@
 "use client"
 
 import Spinner from "@/components/etc/Spinner"
+import RestartButton from "@/components/result/RestartButton"
+import ShareButton from "@/components/result/ShareButton"
 import { useSmoothScrollControl } from "@/hooks/useSmoothScroll"
 import { useTestStore } from "@/hooks/useTestStore"
 import { useEffect, useMemo, useState } from "react"
@@ -59,7 +61,7 @@ export default function Result() {
 
     return (
         <div className="max-h-[70vh] flex flex-col gap-[20px]">
-            <div ref={container} className="flex-1 overflow-y-auto custom-scrollbar relative">
+            <div ref={container} className="flex-1 overflow-y-auto custom-scrollbar relative pt-5">
                 <div className="overflow-y-auto custom-scrollbar h-full">
                     {/* 결과 헤더 */}
                     <div className="text-center">
@@ -85,17 +87,13 @@ export default function Result() {
                 </div>
 
                 {/* 스크롤 그라디언트 오버레이 */}
-                <div className="sticky bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+                <div className="sticky bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
             </div>
 
             {/* 공유 버튼 */}
             <div className="flex space-x-3 shrink-0">
-                <button className="flex-1 bg-blue-500 text-white py-3 px-4 rounded-xl text-sm font-medium hover:bg-blue-600 transition-colors">
-                    결과 공유하기
-                </button>
-                <button className="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors">
-                    다시 테스트
-                </button>
+                <ShareButton />
+                <RestartButton />
             </div>
         </div>
     )
