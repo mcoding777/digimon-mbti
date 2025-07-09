@@ -2,7 +2,7 @@
 
 import Spinner from "@/components/etc/Spinner"
 import { useTestStore } from "@/hooks/useTestStore"
-import { useEffect, useMemo, useState } from "react"
+import { RefObject, useEffect, useMemo, useRef, useState } from "react"
 
 interface MatchData {
     id: number
@@ -21,6 +21,8 @@ interface DigimonData {
 }
 
 export default function Result() {
+    const container: RefObject<HTMLDivElement | null> = useRef(null)
+
     const answers = useTestStore((state) => state.answers)
     const mbti = useMemo(() => {
         const result: Record<string, number> = {};
@@ -50,13 +52,62 @@ export default function Result() {
             .then((data) => setDigimon(data));
     }, [])
 
+    useEffect(() => {
+        let targetScrollTop = 0;
+        let isAnimating = false;
+        let frameId: number | null = null;
+
+        // 부드러운 스크롤 효과를 위함
+        const animateScroll = () => {
+            if (!container.current) return;
+
+            const current = container.current.scrollTop;
+            const delta = (targetScrollTop - current) * 0.2;
+
+            // 최소 이동 임계값 설정
+            if (Math.abs(delta) < 0.5) {
+                isAnimating = false;
+                frameId !== null && cancelAnimationFrame(frameId)
+                return;
+            }
+
+            container.current.scrollTop = current + delta;
+            frameId = requestAnimationFrame(animateScroll);
+        };
+
+        const handleWheel = (e: WheelEvent) => {
+            e.preventDefault();
+
+            if (!container.current) return;
+
+            targetScrollTop += e.deltaY;
+
+            // 스크롤 제한 설정
+            const maxScroll =
+                container.current.scrollHeight - container.current.clientHeight;
+            targetScrollTop = Math.max(0, Math.min(targetScrollTop, maxScroll));
+
+            if (!isAnimating) {
+                isAnimating = true;
+                frameId = requestAnimationFrame(animateScroll);
+            }
+        };
+
+        document.addEventListener('wheel', handleWheel, { passive: false });
+
+        return () => {
+            document.removeEventListener('wheel', handleWheel);
+            frameId !== null && cancelAnimationFrame(frameId)
+        };
+    }, []);
+
     if (!result) {
         return <Spinner />
     }
 
     return (
         <div className="max-h-[70vh] flex flex-col gap-[20px]">
-            <div className="flex-1 overflow-y-auto custom-scrollbar relative">
+            <div ref={container} className="flex-1 overflow-y-auto custom-scrollbar relative">
                 <div className="overflow-y-auto custom-scrollbar h-full">
                     {/* 결과 헤더 */}
                     <div className="text-center">
