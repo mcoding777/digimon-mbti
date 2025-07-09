@@ -1,10 +1,13 @@
+import { useTestStore } from "@/hooks/useTestStore"
 import { ROUTES } from "@/utils/data/routes"
 import { useRouter } from "next/navigation"
 
 export default function RestartButton() {
     const router = useRouter()
+    const resetAnswers = useTestStore((state) => state.resetAnswers)
 
     const handleRestart = () => {
+        resetAnswers()
         router.push(ROUTES.TEST)
     }
 
