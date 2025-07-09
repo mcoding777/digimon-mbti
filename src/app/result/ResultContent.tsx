@@ -29,36 +29,42 @@ export default function ResultContent() {
     const { container } = useSmoothScrollControl()
 
     const searchParams = useSearchParams()
-    const mbti = searchParams.get('mbti')
+    const mbtiQuery = searchParams.get('mbti')
+    const imgQuery = searchParams.get('img')
 
     const answers = useTestStore((state) => state.answers)
     const [matchData, setMatchData] = useState<Record<string, MatchData>>()
-    const [digimon, setDigimon] = useState<DigimonData[]>()
-    const result = useMemo(() => {
-        if (mbti && matchData && digimon) {
+    const [digimonData, setDigimon] = useState<DigimonData[]>()
+
+    const mbti = useMemo(() => {
+        if (mbtiQuery) return mbtiQuery
+
+        if (answers.size > 0 && matchData) {
+            const count: Record<string, number> = {};
+
+            answers.forEach((value) => {
+                count[value] = (count?.[value] || 0) + 1;
+            })
+
+            return `${findMbti(count, 'I', 'E')}${findMbti(count, 'N', 'S')}${findMbti(count, 'T', 'F')}${findMbti(count, 'J', 'P')}`
+        }
+
+        return null
+    }, [mbtiQuery, answers, matchData])
+    const matchMbtiData = useMemo(() => {
+        if (mbti && matchData) {
             return matchData[mbti]
         }
         return null
-    }, [mbti, matchData, digimon])
+    }, [mbti, matchData])
+    const digimon = useMemo(() => {
+        if (matchMbtiData && digimonData) {
+            return digimonData[matchMbtiData.id - 1]
+        }
+        return null
+    }, [digimonData, matchMbtiData])
 
     useEffect(() => {
-        if (mbti || answers.size === 0) return;
-
-        const count: Record<string, number> = {};
-
-        answers.forEach((value) => {
-            count[value] = (count?.[value] || 0) + 1;
-        })
-        const result = `${findMbti(count, 'I', 'E')}${findMbti(count, 'N', 'S')}${findMbti(count, 'T', 'F')}${findMbti(count, 'J', 'P')}`
-
-        const params = new URLSearchParams(searchParams.toString())
-        params.set('mbti', result)
-        window.history.pushState(null, '', `?${params.toString()}`)
-    }, [mbti, answers, searchParams])
-
-    useEffect(() => {
-        if (!mbti) return
-
         fetch("/data/mbti.json")
             .then((res) => res.json())
             .then((data) => setMatchData(data));
@@ -66,9 +72,19 @@ export default function ResultContent() {
         fetch("/data/digimon.json")
             .then((res) => res.json())
             .then((data) => setDigimon(data));
-    }, [mbti])
+    }, [])
 
-    if (!mbti || !result) {
+    useEffect(() => {
+        if (!mbti || !digimon) return
+
+        const params = new URLSearchParams(searchParams.toString())
+        params.set('mbti', mbti)
+        params.set('name', digimon.name)
+        params.set('img', digimon.img)
+        window.history.pushState(null, '', `?${params.toString()}`)
+    }, [mbti, digimon])
+
+    if (!mbtiQuery || !imgQuery || !digimon || !matchMbtiData) {
         return <Spinner text="결과를 분석중입니다." />
     }
 
@@ -79,14 +95,14 @@ export default function ResultContent() {
                     {/* 결과 헤더 */}
                     <div className="text-center">
                         <div className="w-2/3 aspect-square bg-gradient-to-br from-purple-400 to-pink-400 rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden relative">
-                            <Image fill priority src={`/image/result/${digimon?.[result.id - 1].img}` || ''} className="object-cover" alt="디지몬" />
+                            <Image fill priority src={`/image/result/${digimon.img}`} className="object-cover" alt="디지몬" />
                         </div>
                         <div className="mt-6 mb-6">
                             <p className="text-lg text-gray-600">
                                 당신과 어울리는 디지몬은
                             </p>
                             <h1 className="text-2xl font-bold text-gray-800 mb-2">
-                                {result?.name}
+                                {digimon.name}
                             </h1>
                         </div>
                     </div>
@@ -94,7 +110,7 @@ export default function ResultContent() {
                     {/* 한줄 요약 */}
                     <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4">
                         <p className="text-md text-gray-700 text-center font-normal">
-                            {result?.description}
+                            {matchMbtiData.description}
                         </p>
                     </div>
                 </div>
