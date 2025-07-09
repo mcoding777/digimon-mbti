@@ -2,10 +2,8 @@ import Spinner from "@/components/etc/Spinner";
 import useFetchData from "@/hooks/useFetchData";
 import { useTestStore } from "@/hooks/useTestStore";
 import { ROUTES } from "@/utils/data/routes";
-import { DigimonData, MatchData } from "@/utils/types/result";
-import { match } from "assert";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 
 export default function TestComplete() {
     const router = useRouter()
