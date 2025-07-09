@@ -79,7 +79,7 @@ export default function ResultContent() {
                     {/* 결과 헤더 */}
                     <div className="text-center">
                         <div className="w-2/3 aspect-square bg-gradient-to-br from-purple-400 to-pink-400 rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden relative">
-                            <Image fill src={`/image/result/${digimon?.[result.id - 1].img}` || ''} className="w-full h-full object-cover" alt="디지몬" />
+                            <Image fill priority src={`/image/result/${digimon?.[result.id - 1].img}` || ''} className="object-cover" alt="디지몬" />
                         </div>
                         <div className="mt-6 mb-6">
                             <p className="text-lg text-gray-600">

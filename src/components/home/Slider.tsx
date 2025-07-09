@@ -22,8 +22,8 @@ export default function Slider({ digimons }: { digimons: string[] }) {
                   key={index}
                   src={`/image/result/${digimon}`}
                   alt='디지몬'
-                  className="w-full h-full object-cover"
-                  loading="eager" />
+                  className="object-cover"
+                  loading="lazy" />
               </div>
             ))}
           </div>

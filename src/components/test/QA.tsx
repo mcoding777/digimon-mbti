@@ -20,9 +20,10 @@ export default function QA({ idx, currentQ, value, setValue }: QA) {
                     {currentQ.img ? (
                         <Image
                             fill
+                            priority
                             src={`/image/question/${currentQ.img}`}
                             alt="상황 이미지"
-                            className="w-full h-full object-fill"
+                            className="object-fill"
                         />
                     ) : (
                         /* 플레이스홀더 */
