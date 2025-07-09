@@ -1,6 +1,6 @@
 "use client"
 
-import { Question } from "@/types/test";
+import { Question } from "@/utils/types/test";
 
 interface QA {
     idx: number

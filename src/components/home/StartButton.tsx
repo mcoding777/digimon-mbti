@@ -1,12 +1,13 @@
 "use client"
 
+import { ROUTES } from "@/utils/data/routes"
 import { useRouter } from "next/navigation"
 
 export default function StartButton() {
     const router = useRouter()
 
     const handleClick = () => {
-        router.push('/test')
+        router.push(ROUTES.TEST)
     }
 
     return (

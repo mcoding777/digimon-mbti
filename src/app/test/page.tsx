@@ -6,7 +6,7 @@ import ProgressBar from "@/components/test/ProgressBar";
 import QA from "@/components/test/QA";
 import Spinner from "@/components/etc/Spinner";
 import { useTestStore } from "@/hooks/useTestStore";
-import { Question } from "@/types/test";
+import { Question } from "@/utils/types/test";
 import { useEffect, useState } from "react";
 import NaviButtons from "@/components/test/NaviButtons";
 
