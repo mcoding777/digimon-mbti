@@ -15,8 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My Starter Digimon",
+  title: "나의 스타터 디지몬",
   description: "20개의 질문으로 알아보는 나의 디지몬 파트너",
+  openGraph: {
+    title: '내가 선택받은 아이들이었다면, 나의 디지몬은?',
+    description: '20개의 질문으로 알아보는 나의 디지몬 파트너',
+  },
 };
 
 export default function RootLayout({
