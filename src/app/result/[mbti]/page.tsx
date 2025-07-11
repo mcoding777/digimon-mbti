@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<ResultSearc
         openGraph: {
             title: `내 디지몬은 ${digimon.name}이야`,
             description: '너의 디지몬은 누굴까?',
-            images: [digimon.img],
+            images: [`${baseUrl}/image/result/${digimon.img}`],
         },
     };
 }
