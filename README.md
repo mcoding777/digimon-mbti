@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 서비스 소개
+내가 선택받은 아이들이었다면?
+MBTI 테스트로 알아보는 나의 스타터 디지몬
 
-## Getting Started
+## 프로젝트 소개
+- NextJS 개발 + Vercel 배포
+- OG(Open Graph) 적용
 
-First, run the development server:
+## 프로젝트 진행 방법
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1. ChatGPT로 MBTI 도출 알고리즘에 대한 아이디어 모색
+- 4가지 부분(I/E, N/S, T/P, J/F)에 맞는 문항 제시
+- 선택된 답에 1점 부여. 점수가 가장 많은 쪽으로 MBTI 도출
+- 동점 나오는 일이 없도록 부분별 문항 개수는 홀수로 맞출 것
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. ChatGPT로 문항 도출
+- 사용자가 테스트에 흥미를 느낄 수 있도록 스토리 형성
+- 중복되거나 어색한 문답은 직접 고쳐주기
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. 스타터 디지몬별 MBTI 데이터 수집 및 전처리
+- [Pdb](https://www.personality-database.com/ko/profile?pid=2&cid=8&sub_cat_id=404) 및 구글 검색으로 디지몬별 MBTI 후보 수집
+- 디지몬별 MBTI 후보 중에서 16가지의 MBTI와 어울리는 것을 중점으로 후보군 정리 (ex. 16가지의 MBTI에 어울리는 디지몬이 최소 1개는 나오도록 설계)
+- 16가지 MBTI와 어울리는 디지몬 MBTI 데이터 도출
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. 각 페이지에 사용할 이미지 확보
+- 메인: 각 디지몬들의 깔끔한 이미지
+- 테스트: 스토리에 어울리는 애니 속 장면
+- 결과: 각 디지몬들의 귀여운 이미지 ^^
 
-## Learn More
+### 5. Claude로 UI 제작
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 6. 개발 및 배포
