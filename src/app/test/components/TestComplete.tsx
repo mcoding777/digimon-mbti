@@ -1,5 +1,4 @@
 import Spinner from "@/components/etc/Spinner";
-import useFetchData from "@/hooks/useFetchData";
 import { useTestStore } from "@/hooks/useTestStore";
 import { ROUTES } from "@/utils/data/routes";
 import { useRouter } from "next/navigation";
@@ -9,8 +8,6 @@ export default function TestComplete() {
     const router = useRouter()
 
     const answers = useTestStore((state) => state.answers)
-    const { matchData, digimonData } = useFetchData()
-
     const mbti = useMemo(() => {
         if (answers.size > 0) {
             const count: Record<string, number> = {};
@@ -24,26 +21,12 @@ export default function TestComplete() {
 
         return null
     }, [answers])
-    const matchMbti = useMemo(() => {
-        if (mbti && matchData) {
-            return matchData[mbti]
-        }
-        return null
-    }, [mbti, matchData])
-    const digimon = useMemo(() => {
-        if (matchMbti && digimonData) {
-            return digimonData[matchMbti.id - 1]
-        }
-        return null
-    }, [digimonData, matchMbti])
-
-
 
     useEffect(() => {
-        if (mbti && matchMbti && digimon) {
-            router.push(ROUTES.RESULT.DETAIL(mbti, digimon.name, digimon.img))
+        if (mbti) {
+            router.push(ROUTES.RESULT.DETAIL(mbti))
         }
-    }, [mbti, matchMbti, digimon])
+    }, [router.push, mbti])
 
 
     return <Spinner text="결과를 분석중입니다." />
