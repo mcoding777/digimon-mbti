@@ -1,8 +1,8 @@
 "use client"
 
 import Spinner from "@/components/etc/Spinner"
-import RestartButton from "@/components/result/RestartButton"
-import ShareButton from "@/components/result/ShareButton"
+import RestartButton from "@/app/result/components/RestartButton"
+import ShareButton from "@/app/result/components/ShareButton"
 import useFetchData from "@/hooks/useFetchData"
 import { useSmoothScrollControl } from "@/hooks/useSmoothScroll"
 import Image from "next/image"
