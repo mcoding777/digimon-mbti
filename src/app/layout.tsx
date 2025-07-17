@@ -17,10 +17,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "나의 스타터 디지몬",
   description: "20개의 질문으로 알아보는 나의 디지몬 파트너",
+  keywords: ['디지몬', '디지몬MBTI', 'MBTI테스트', '디지몬심리테스트', '심리테스트'],
   openGraph: {
     title: '내가 선택받은 아이들이었다면, 나의 디지몬은?',
     description: '20개의 질문으로 알아보는 나의 디지몬 파트너',
   },
+  verification: {
+    google: 'xfxXnEPWCjGGhfBcz1I6wQ_l-xqqvmBempUts0b_yXc'
+  }
 };
 
 export default function RootLayout({
