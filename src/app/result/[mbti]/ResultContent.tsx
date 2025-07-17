@@ -1,14 +1,10 @@
 "use client"
 
-import Spinner from "@/components/etc/Spinner"
 import RestartButton from "@/app/result/components/RestartButton"
 import ShareButton from "@/app/result/components/ShareButton"
-import useFetchData from "@/hooks/useFetchData"
 import { useSmoothScrollControl } from "@/hooks/useSmoothScroll"
 import Image from "next/image"
-import { useSearchParams } from "next/navigation"
-import { useMemo, } from "react"
-import { DigimonData, MatchData } from "@/utils/types/result"
+import { DigimonData } from "@/utils/types/result"
 
 
 export default function ResultContent({ name, img, description }: DigimonData) {
