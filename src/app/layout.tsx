@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "나의 스타터 디지몬",
+  title: "나의 파트너 디지몬 (스타터 디지몬 MBTI)",
   description: "20개의 질문으로 알아보는 나의 디지몬 파트너",
   keywords: ['디지몬', '디지몬MBTI', 'MBTI테스트', '디지몬심리테스트', '심리테스트'],
   openGraph: {
@@ -23,7 +23,10 @@ export const metadata: Metadata = {
     description: '20개의 질문으로 알아보는 나의 디지몬 파트너',
   },
   verification: {
-    google: 'xfxXnEPWCjGGhfBcz1I6wQ_l-xqqvmBempUts0b_yXc'
+    google: 'xfxXnEPWCjGGhfBcz1I6wQ_l-xqqvmBempUts0b_yXc',
+    other: {
+      'naver-site-verification': 'c33f6ccb6fc3de70592e52d6856f6bb9d216edfd',
+    }
   }
 };
 
