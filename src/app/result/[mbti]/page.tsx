@@ -1,10 +1,10 @@
 import Spinner from "@/components/etc/Spinner"
-import { Suspense, } from "react"
 import ResultContent from "./ResultContent"
 import { Metadata } from "next";
 import { DigimonData, MatchData } from "@/utils/types/result";
 import matchData from '@/app/result/data/mbti.json';
 import digimonData from '@/app/result/data/digimon.json';
+import { BASE_URL } from "@/utils/data/constants";
 
 interface ResultSearchParams {
     mbti: string;
@@ -13,8 +13,6 @@ interface ResultSearchParams {
 }
 
 type MbtiKey = keyof typeof matchData;
-
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
 
 export async function generateMetadata({ params }: { params: Promise<ResultSearchParams> }): Promise<Metadata> {
     const { mbti } = await params
@@ -29,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<ResultSearc
         openGraph: {
             title: `내 디지몬은 ${digimon.name}이야`,
             description: '너의 디지몬은 누굴까?',
-            images: [`${baseUrl}/image/result/${digimon.img}`],
+            images: [`${BASE_URL}/image/result/${digimon.img}`],
         },
     };
 }
