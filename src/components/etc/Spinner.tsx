@@ -4,7 +4,7 @@ interface SpinnerProps {
 
 export default function Spinner({ text = '' }: SpinnerProps) {
     return (
-        <div className="mt-8 mb-8">
+        <div className="w-full min-h-90 mt-8 mb-8 flex flex-col justify-center items-center">
             <div className="relative mx-auto w-16 h-16 mb-6">
                 {/* 외부 원 */}
                 <div className="absolute inset-0 border-4 border-gray-200 rounded-full"></div>
