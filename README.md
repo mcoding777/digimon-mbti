@@ -30,3 +30,4 @@ MBTI 테스트로 알아보는 나의 스타터 디지몬
 ### 5. Claude로 UI 제작
 
 ### 6. 개발 및 배포
+https://digimon-mbti.vercel.app/
