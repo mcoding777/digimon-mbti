@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import * as Sentry from "@sentry/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,10 @@ export const metadata: Metadata = {
     other: {
       'naver-site-verification': 'c33f6ccb6fc3de70592e52d6856f6bb9d216edfd',
     }
-  }
+  },
+  other: {
+    ...Sentry.getTraceData(),
+  },
 };
 
 export default function RootLayout({

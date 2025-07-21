@@ -26,7 +26,7 @@ export default function TestComplete() {
         if (mbti) {
             router.push(ROUTES.RESULT.DETAIL(mbti))
         }
-    }, [router.push, mbti])
+    }, [mbti])
 
 
     return <Spinner text="결과를 분석중입니다." />
