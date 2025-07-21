@@ -3,6 +3,7 @@
 import Head from "next/head";
 import * as Sentry from "@sentry/nextjs";
 import { useState, useEffect } from "react";
+import NotFound from "../not-found";
 
 class SentryExampleFrontendError extends Error {
   constructor(message: string | undefined) {
@@ -22,6 +23,10 @@ export default function Page() {
     }
     checkConnectivity();
   }, []);
+
+  if (process.env.NODE_ENV === 'production') {
+    return <NotFound />
+  }
 
   return (
     <div>
